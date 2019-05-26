@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>拳击沙包</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style>
+			#bag{
+			    width: 200px;
+			    height: 500px;
+			    margin: 0 auto;
+			    background: url(img/bag.png) center no-repeat;
+			    background-size: 80%;
+			}
+			#bag.burst{
+			    background-image: url(img/bag-burst.png);
+			}
+			#bag-health{
+			    width: 200px;
+			    border: 2px solid #000;
+			    margin: 0 auto 20px auto;
+			}
+			#bag-health div{
+			    height: 20px;
+			    background: crimson
+			}
+			#controls{
+				width: 120px;
+				margin: 0 auto;
+			}
+		
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h1>拳击沙包</h1>
+			<div id="bag" v-bind:class="{ burst: ended }"></div>
+			
+			<!-- 状态信息 -->
+			<div id="bag-health">
+			    <div v-bind:style="{ width: health + '%' }"></div>
+			</div>
+			
+			<button @click="hit">打击</button>
+			<button @click="restart">还原</button>
+		</div>
+		
+		
+		<script>
+			var v = new Vue({
+				el: "#app",
+				data: {
+					ended : false,
+					health : 100
+				},
+				methods:{
+					hit : function(){
+						if(this.ended == false){
+							this.health -= 20;
+							if(this.health <= 0){
+								this.ended = true;
+							}
+						}
+					},
+					restart : function(){
+						this.ended = false;
+						this.health = 100;
+					}
+				},
+				computed:{
+					
+				}
+			});
+			setTimeout(function(){
+				v.name="张三";
+			},5000);
+		</script>
+	</body>
+
+
+</html>

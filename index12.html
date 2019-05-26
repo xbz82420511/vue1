@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>动态绑定</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style>
+			span{
+				width: 100px;
+				height: 100px;
+				display: inline-block;
+				background: red;
+				color: #333333;
+				margin: 10px 0;
+			}
+			
+			.changeColor {
+					background: blue;
+				}
+			.changeLength {
+				content: "length";
+				margin-left: 10px;
+			}	
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h1>动态 Css class</h1>
+			
+			<h2 >实力1</h2>
+			
+			<h2>实力2</h2>
+			
+			<span v-bind:class="{ changeColor: changeColor }"></span>
+			
+			<div> 
+				<span v-bind:class="comp">张三</span>
+			</div>
+		</div>
+		
+		
+		<script>
+			var v = new Vue({
+				el: "#app",
+				data: {
+					changeColor : false,
+					changeLength : false
+				},
+				methods:{
+					
+				},
+				computed:{
+					comp : function(){
+						return {
+							changeLength : true
+						}
+					}
+				}
+			});
+			setTimeout(function(){
+				v.name="张三";
+			},5000);
+		</script>
+	</body>
+
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>绑定事件</title>
+		<link rel="stylesheet" href="style.css" />
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<span v-if="show">123<br></span>
+			<button v-on:click="show = false;">隐藏1</button>
+			<button v-on:click="show1">显示</button><br>
+		</div>
+		
+		<div id="test1">
+			<a v-bind:href="url">百度</a>
+			<a v-on:click="click">点击</a>
+		</div>	
+		<script>
+			var v = new Vue({
+				el: "#app",
+				data: {
+					show:true
+				},
+				methods:{
+					hide1:function(){
+						this.show = false;
+					},
+					show1:function(){
+						this.show = true;
+					}
+				}
+			});
+			
+			var v2 = new Vue({
+				el:"#test1",
+				data:{
+					url:"http://www.baidu.com",
+					click : function(){
+						alert("click")
+					}
+				}
+			});
+		</script>
+	</body>
+
+
+</html>

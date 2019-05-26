@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>双向绑定</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h1>双向绑定</h1>
+			<label>姓名：</label>
+			<input ref="_name" type="text" @keyup="logName" />
+			{{name}}<br>
+			<label>年龄</label>
+			<input type="text" v-model="age"/>
+			{{age}}
+			
+		</div>
+		
+		
+		<script>
+			var v = new Vue({
+				el: "#app",
+				data: {
+					name:'hello',
+					age : 13
+				},
+				methods:{
+					logName:function(){
+						this.name = this.$refs._name.value;
+					},
+					logAge:function(){
+						console.log("正在输入年龄");
+					}
+				}
+			});
+			setTimeout(function(){
+				v.name="张三";
+			},5000);
+		</script>
+	</body>
+
+
+</html>

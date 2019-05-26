@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>class</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app" class="static" :class="{'active':isActive, 'error':isError}">
+			123
+		</div>
+		
+		
+		<script>
+			var v = new Vue({
+				el: "#app",
+				data: {
+					isActive : false,
+					isError:true
+				}
+			});
+			setTimeout(function(){
+				v.isActive = true;
+			},1000);
+		</script>
+	</body>
+
+
+</html>
